@@ -11,7 +11,7 @@ int check_cycle(listint_t *list)
 
 	if (!list)
 		return (0);
-	for (single = dble = list; single && dble;)
+	for (single = dble = list; single && dble && dble->next;)
 	{
 		single = single->next;
 		dble = dble->next->next;
