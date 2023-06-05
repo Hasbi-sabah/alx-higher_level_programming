@@ -1,2 +1,3 @@
-#!/bin/bash
-python -B -m py_compile $PYFILE
+#!/usr/bin/python3
+code = open('$PYFILE').read()
+compile(code, '$PYFILE', 'exec')
