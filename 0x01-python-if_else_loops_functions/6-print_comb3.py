@@ -3,6 +3,6 @@ for i in range(0, 10):
     for j in range(0, 10):
         if j > i:
             if i * 10 + j != 89:
-                print(f'{(i * 10 + j):02d}', end=', ')
+                print("{:02d}".format(i * 10 + j), end=', ')
             else:
                 print("89")
