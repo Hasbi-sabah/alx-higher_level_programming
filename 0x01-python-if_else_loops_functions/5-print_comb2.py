@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# This is a program that prints numbers from 0 to 99.
+# This is a program that outputs numbers from 0 to 99.
 
 for i in range(0, 100):
     if i < 99:
