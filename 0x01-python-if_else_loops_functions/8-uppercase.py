@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# This is a function that prints a string in uppercase.
+# This is a function that outputs a string in uppercase.
 
 def uppercase(str):
     for letter in str:
