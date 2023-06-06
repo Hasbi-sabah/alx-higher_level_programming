@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+# This program generates a random number,
+# and prints its last digit.
+
 import random
 number = random.randint(-10000, 10000)
 n = abs(number) % 10
