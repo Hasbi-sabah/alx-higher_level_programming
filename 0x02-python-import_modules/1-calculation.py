@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # This is a program that imports functions
-# from the file add_0.py and does some Maths.
+# from a file and does some Maths.
 
 import calculator_1 as c1
 if __name__ == "__main__":
