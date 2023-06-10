@@ -32,9 +32,8 @@ int is_palindrome(listint_t **head)
 
 	if (!*head)
 		return (1);
-	single = dble = *head;
 	for (single = dble = *head; dble && dble->next;
-			dble = dble->next->next, single = single->next)
+			single = single->next, dble = dble->next->next)
 		;
 	if (dble)
 		rev_head = single->next;
