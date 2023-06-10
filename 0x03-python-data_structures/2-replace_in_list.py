@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-#This is a function that replaces an element
+# This is a function that replaces an element
 # of a list at a specific position (like in C).
 
 def replace_in_list(my_list, idx, element):
