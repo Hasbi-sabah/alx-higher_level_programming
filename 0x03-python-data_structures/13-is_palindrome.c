@@ -39,7 +39,7 @@ int is_palindrome(listint_t **head)
 	if (dble)
 		rev_head = single->next;
 	else
-		rev_head = single->next->next;
+		rev_head = single;
 	reverse_listint(&rev_head);
 	for (single = *head; rev_head && single; rev_head = rev_head->next,
 			single = single->next)
