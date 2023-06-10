@@ -1,9 +1,13 @@
 #include <Python.h>
 #include <stdio.h>
 
+/**
+ * print_python_list_info - prints python list info
+ * @p: list
+ */
 void print_python_list_info(PyObject *p)
 {
-	Py_ssize_t size = ((PyVarObject*)p)->ob_size;
+	Py_ssize_t size = ((PyVarObject *)p)->ob_size;
 	Py_ssize_t alloc = ((PyListObject *)p)->allocated;
 	PyObject *item;
 	int i;
