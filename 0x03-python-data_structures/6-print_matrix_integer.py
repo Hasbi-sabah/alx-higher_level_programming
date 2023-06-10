@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-#This is a function that prints a matrix of integers.
+# This is a function that prints a matrix of integers.
 
 def print_matrix_integer(matrix=[[]]):
     if matrix == [[]]:
