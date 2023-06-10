@@ -30,7 +30,7 @@ int is_palindrome(listint_t **head)
 {
 	listint_t *single, *dble, *rev_head;
 
-	if (!*head || !(*head)->next)
+	if (!*head)
 		return (1);
 	single = dble = *head;
 	for (single = dble = *head; dble && dble->next;
