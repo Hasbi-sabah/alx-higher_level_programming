@@ -1,5 +1,9 @@
 #include <Python.h>
 
+/**
+ * print_python_bytes - prints python bytes
+ * @p: byte
+ */
 void print_python_bytes(PyObject *p)
 {
 	long int size, i;
@@ -10,7 +14,7 @@ void print_python_bytes(PyObject *p)
 	{
 		printf("  [ERROR] Invalid Bytes Object\n");
 		return;
-	}	
+	}
 	PyBytes_AsStringAndSize(p, &trying_str, &size);
 	printf("  size: %li\n", size);
 	printf("  trying string: %s\n", trying_str);
@@ -23,6 +27,10 @@ void print_python_bytes(PyObject *p)
 	printf("\n");
 }
 
+/**
+ * print_python_list - prints python lists
+ * @p: list
+ */
 void print_python_list(PyObject *p)
 {
 	Py_ssize_t size = ((PyVarObject *)p)->ob_size;
