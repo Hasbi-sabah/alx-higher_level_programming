@@ -5,14 +5,13 @@ def roman_to_int(roman_string):
     integer = 0
     roman = {'M': 1000, 'D': 500, 'C': 100, 'L': 50, 'X': 10, 'V': 5, 'I': 1}
     save = 0
-    for n in roman_string:
+    for n in reversed(roman_string):
+        if n not in roman:
+            return None
         n = roman[n]
-        if save == 0:
-            save = n
-        elif n <= save:
+        if n >= save:
             integer += n
         else:
-            integer -= save
-            save = n
-    integer += save
+            integer -= n
+        save = n
     return integer
