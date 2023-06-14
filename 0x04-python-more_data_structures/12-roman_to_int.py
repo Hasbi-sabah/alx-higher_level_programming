@@ -7,7 +7,9 @@ def roman_to_int(roman_string):
     save = 0
     for n in roman_string:
         n = roman[n]
-        if n >= save:
+        if save == 0:
+            save = n
+        elif n <= save:
             integer += n
         else:
             integer -= save
