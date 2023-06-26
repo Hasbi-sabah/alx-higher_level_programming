@@ -74,7 +74,10 @@ void print_python_list(PyObject *p)
 	{
 		type = (((PyListObject *)p)->ob_item[i])->ob_type->tp_name;
 		printf("Element %i: %s\n", i, type);
-		if (!strcmp(type, "bytes"))
+		if (PyBytes_Check(((PyListObject *)p)->ob_item[i]))
 			print_python_bytes(((PyListObject *)p)->ob_item[i]);
+		else if (((PyListObject *)p)->ob_item[i])
+			print_python_float(((PyListObject *)p)->ob_item[i]);
+
 	}
 }
