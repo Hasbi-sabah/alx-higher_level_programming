@@ -36,7 +36,7 @@ void print_python_bytes(PyObject *p)
 		return;
 	}
 	size = PyBytes_Size(p);
-	trying_str = assert(PyBytes_Check(p)), (((PyBytesObject *)(p))->ob_sval);
+	trying_str = (assert(PyBytes_Check(p)), (((PyBytesObject *)(p))->ob_sval));
 	printf("  size: %li\n", size);
 	printf("  trying string: %s\n", trying_str);
 	if (size >= 10)
