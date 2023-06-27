@@ -65,7 +65,9 @@ class Square:
         """
         Prints square.
         """
-        if self._Square__size == 0 or self._Square__position[1] > 0:
+        if self._Square__size == 0:
+            print()
+        for i in range(self._Square__position[1]):
             print()
         for i in range(self._Square__size):
             for k in range(self._Square__position[0]):
