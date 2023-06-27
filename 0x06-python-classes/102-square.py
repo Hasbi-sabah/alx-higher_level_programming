@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-This module creates an empty class Square.
+This module creates a class Square.
 """
 
 
@@ -11,6 +11,7 @@ class Square:
     def __init__(self, size=0):
         """
         Initializes a new private instance of the Square class.
+        And raises TypeError and ValueError
 
         Args:
             size (int): Size of square.

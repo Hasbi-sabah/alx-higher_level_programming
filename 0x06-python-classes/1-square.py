@@ -1,12 +1,15 @@
 #!/usr/bin/python3
 """
-This module creates an empty class Square.
+This module creates a class Square.
 """
 
 
 class Square:
     """
-    An empty class named Square.
+    A class named Square.
+
+    Args:
+        size (int): size of square
     """
     def __init__(self, size=0):
         """
