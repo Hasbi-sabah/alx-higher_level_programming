@@ -15,64 +15,64 @@ class Square:
         Args:
             _Square__size (int): Size of square.
         """
-        self._Square__size = size
-        self._Square__position = position
+        self.size = size
+        self.position = position
 
     @property
     def size(self):
         """
         Getter of size for the class Square
         """
-        return self._Square__size
+        return self.__size
 
     @size.setter
     def size(self, value):
         """
         Setter of size for the class Square
         """
-        if type(value) is not int:
+        if not isinstance(value, int):
             raise TypeError("size must be an integer")
         if value < 0:
             raise ValueError("size must be >= 0")
-        self._Square__size = value
+        self.__size = value
 
     @property
     def position(self):
         """
         Getter of position for the class Square
         """
-        return self._Square__position
+        return self.__position
 
     @position.setter
     def position(self, value):
         """
         Setter of position for the class Square
         """
-        if type(value) is not tuple or len(value) != 2 \
-                or type(value[0]) is not int \
-                or type(value[1]) is not int \
+        if not isinstance(value, tuple) or len(value) != 2 \
+                or not isinstance(value[0], int) \
+                or not isinstance(value[1], int) \
                 or value[0] < 0 or value[1] < 0:
             raise TypeError("position must be a tuple of 2 positive integers")
-        self._Square__position = value
+        self.__position = value
 
     def area(self):
         """
         Calculates area of square.
         """
-        return self._Square__size ** 2
+        return self.__size ** 2
 
     def my_print(self):
         """
         Prints square.
         """
-        if self._Square__size == 0:
+        if self.__size == 0:
             print()
             return
-        for i in range(self._Square__position[1]):
+        for i in range(self.__position[1]):
             print()
-        for i in range(self._Square__size):
-            for k in range(self._Square__position[0]):
+        for i in range(self.__size):
+            for k in range(self.__position[0]):
                 print(' ', end='')
-            for j in range(self._Square__size):
+            for j in range(self.__size):
                 print("#", end='')
             print()
