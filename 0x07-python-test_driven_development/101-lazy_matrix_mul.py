@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+"""
+Module to multiply 2 matrices the lazy way
+"""
+
+
 import numpy as np
 
 

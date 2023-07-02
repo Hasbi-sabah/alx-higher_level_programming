@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+"""
+Module to seperate text based on delims
+"""
+
+
 def text_indentation(text):
     """
     A function that prints a text with 2 new lines
@@ -18,6 +23,8 @@ def text_indentation(text):
         if letter in delims:
             new_text.append(line.strip())
             line = ""
-    new_text.append(line.strip())
+    else:
+        if line != "":
+            new_text.append(line.strip())
     for line in new_text:
         print(line, end='\n\n')
