@@ -33,7 +33,7 @@ class Rectangle:
             self : Argument
 
         """
-        return self.width
+        return self.__width
 
     @width.setter
     def width(self, value):
@@ -60,7 +60,7 @@ class Rectangle:
             self : Argument
 
         """
-        return self.height
+        return self.__height
 
     @height.setter
     def height(self, value):
