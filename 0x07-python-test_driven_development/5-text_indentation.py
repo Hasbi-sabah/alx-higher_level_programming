@@ -27,4 +27,8 @@ def text_indentation(text):
         if line != "":
             new_text.append(line.strip())
     for line in new_text:
-        print(line, end='\n\n')
+        print(line, end='')
+        for el in delims:
+            if el in line:
+                print(end='\n\n')
+                break
