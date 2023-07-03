@@ -84,6 +84,37 @@ class Rectangle:
             raise ValueError("height must be >= 0")
         self.__height = value
 
+    @staticmethod
+    def bigger_or_equal(rect_1, rect_2):
+        """
+        Static method to return the biggest Rect based on area
+
+        Args:
+            rect_1 : Argument
+            rect_2 : Argument
+
+        """
+        if not isinstance(rect_1, Rectangle):
+            raise TypeError("rect_1 must be an instance of Rectangle")
+        if not isinstance(rect_2, Rectangle):
+            raise TypeError("rect_2 must be an instance of Rectangle")
+        if Rectangle.area(rect_1) >= Rectangle.area(rect_2):
+            return rect_1
+        return rect_2
+
+    @classmethod
+    def square(cls, size=0):
+        """
+        Returns a new Rectangle instance with width == height == size
+
+        Args:
+            cls : Argument
+            size : Argument
+                (default is 0)
+
+        """
+        return cls(size, size)
+
     def area(self):
         """
         Returns area
@@ -145,34 +176,3 @@ class Rectangle:
         """
         Rectangle.number_of_instances -= 1
         print("Bye rectangle...")
-
-    @staticmethod
-    def bigger_or_equal(rect_1, rect_2):
-        """
-        Static method to return the biggest Rect based on area
-
-        Args:
-            rect_1 : Argument
-            rect_2 : Argument
-
-        """
-        if not isinstance(rect_1, Rectangle):
-            raise TypeError("rect_1 must be an instance of Rectangle")
-        if not isinstance(rect_2, Rectangle):
-            raise TypeError("rect_2 must be an instance of Rectangle")
-        if Rectangle.area(rect_1) >= Rectangle.area(rect_2):
-            return rect_1
-        return rect_2
-
-    @classmethod
-    def square(cls, size=0):
-        """
-        Returns a new Rectangle instance with width == height == size
-
-        Args:
-            cls : Argument
-            size : Argument
-                (default is 0)
-
-        """
-        return cls(size, size)
