@@ -4,6 +4,9 @@
  [15 22]]
 >>> print(lazy_matrix_mul([[1, 2]], [[3, 4], [5, 6]]))
 [[13 16]]
+>>> print(lazy_matrix_mul([[1.2, 5.5, 6.2], [4.66, 12.3, -9.2]], [[5.0, 3.3], [-2.9, 4.4], [7.2, 4.4]]))
+[[ 34.69   55.44 ]
+ [-78.61   29.018]]
 >>> lazy_matrix_mul("hola", "soy Dora")
 Traceback (most recent call last):
 ...

@@ -128,6 +128,26 @@ class TestMaxInteger(unittest.TestCase):
                                       10, -45, 25, -15, 0, 30, -20, 40, -35,
                                       15]), 98)
 
+    def test_floats(self):
+        """
+        Tests with floats
+
+        Args:
+            self : Argument
+
+        """
+        self.assertEqual(max_integer([1.53, 6.33, -9.123, 15.2, 6.0]), 15.2)
+
+    def test_mix(self):
+        """
+        Tests with a mix
+
+        Args:
+            self : Argument
+
+        """
+        self.assertEqual(max_integer([1.53, 2, -19.123, 15.2, -5]), 15.2)
+
 
 if __name__ == '__main__':
 

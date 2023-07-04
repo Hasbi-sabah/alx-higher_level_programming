@@ -21,13 +21,13 @@ def text_indentation(text):
     for letter in text:
         line += letter
         if letter in delims:
-            new_text.append(line.strip())
+            new_text.append(line.replace(" \n", "\n").replace("\n ", "\n"))
             line = ""
     else:
         if line != "":
-            new_text.append(line.strip())
+            new_text.append(line.replace(" \n", "\n").replace("\n ", "\n"))
     for line in new_text:
-        print(line, end='')
+        print(line.strip(' \t'), end='')
         for el in delims:
             if el in line:
                 print(end='\n\n')

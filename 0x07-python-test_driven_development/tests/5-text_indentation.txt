@@ -31,6 +31,14 @@ Utinam quidem dicerent alium alio beatiorem! Iam ruinas videres
 Traceback (most recent call last):
 ...
 TypeError: text must be a string
+>>> text_indentation(("hola.", "soy Dora?"))
+Traceback (most recent call last):
+...
+TypeError: text must be a string
+>>> text_indentation(None)
+Traceback (most recent call last):
+...
+TypeError: text must be a string
 >>> text_indentation(".?:")
 .
 <BLANKLINE>
@@ -47,3 +55,36 @@ Line number 1
 <BLANKLINE>
 This is another line
 Once again
+>>> text_indentation("Hola?")
+Hola?
+<BLANKLINE>
+>>> text_indentation("   Hola there.")
+Hola there.
+<BLANKLINE>
+>>> text_indentation("     	  ")
+>>> text_indentation("Hola.   ")
+Hola.
+<BLANKLINE>
+>>> text_indentation("    Hola?    Soy Dora.   ")
+Hola?
+<BLANKLINE>
+Soy Dora.
+<BLANKLINE>
+>>> text_indentation("hola, soy dora")
+hola, soy dora
+>>> text_indentation("hola! soy:\nDora.")
+hola! soy:
+<BLANKLINE>
+<BLANKLINE>
+Dora.
+<BLANKLINE>
+>>> text_indentation("\n\n\n Hola, soy Dora.")
+<BLANKLINE>
+<BLANKLINE>
+<BLANKLINE>
+Hola, soy Dora.
+<BLANKLINE>
+>>> text_indentation("Hola \n soy Dora.")
+Hola
+soy Dora.
+<BLANKLINE>

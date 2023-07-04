@@ -19,10 +19,12 @@ def matrix_divided(matrix, div):
     if div == 0:
         raise ZeroDivisionError('division by zero')
     if type(matrix) is list:
-        length = len(matrix[0])
+        if len(matrix) == 0:
+            raise TypeError(ErrMsg)
         for row in matrix:
             if type(row) is not list:
                 raise TypeError(ErrMsg)
+            length = len(matrix[0])
             if len(row) != length:
                 raise TypeError(
                     'Each row of the matrix must have the same size')

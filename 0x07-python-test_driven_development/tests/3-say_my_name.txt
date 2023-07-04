@@ -3,6 +3,10 @@
 My name is John Smith
 >>> say_my_name("Bob")
 My name is Bob 
+>>> say_my_name("Bob The Builder")
+My name is Bob The Builder 
+>>> say_my_name("Bob The", "Strong Builder")
+My name is Bob The Strong Builder
 >>> say_my_name("")
 My name is  
 >>> say_my_name("", "")
@@ -21,6 +25,18 @@ TypeError: first_name must be a string
 Traceback (most recent call last):
 ...
 TypeError: last_name must be a string
+>>> say_my_name(12, 'James')
+Traceback (most recent call last):
+...
+TypeError: first_name must be a string
+>>> say_my_name(['Jake', 'Mary', 'Nobody'], 'Bob')
+Traceback (most recent call last):
+...
+TypeError: first_name must be a string
+>>> say_my_name('Bob', ['Jake', 'Mary', 'Nobody'])
+Traceback (most recent call last):
+...
+TypeError: last_name must be a string
 >>> say_my_name(12, 98)
 Traceback (most recent call last):
 ...
@@ -29,3 +45,7 @@ TypeError: first_name must be a string
 Traceback (most recent call last):
 ...
 TypeError: first_name must be a string
+>>> say_my_name()
+Traceback (most recent call last):
+...
+TypeError: say_my_name() missing 1 required positional argument: 'first_name'
