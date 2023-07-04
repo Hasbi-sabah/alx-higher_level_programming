@@ -3,6 +3,12 @@ Test cases for print_square function
 ====================================
 
 >>> print_square = __import__('4-print_square').print_square
+>>> docstring = __import__('4-print_square').__doc__
+>>> len(docstring) > 0
+True
+>>> docstring = __import__('4-print_square').print_square.__doc__
+>>> len(docstring) > 0
+True
 >>> print_square(0)
 >>> print_square(1)
 #

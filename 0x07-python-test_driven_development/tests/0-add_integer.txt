@@ -3,6 +3,12 @@ Test cases for add_integer function
 ===================================
 
 >>> add_integer = __import__('0-add_integer').add_integer
+>>> docstring = __import__('0-add_integer').__doc__
+>>> len(docstring) > 0
+True
+>>> docstring = __import__('0-add_integer').add_integer.__doc__
+>>> len(docstring) > 0
+True
 >>> add_integer(5, 10)
 15
 >>> add_integer(5.0, 10.0)

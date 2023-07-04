@@ -3,6 +3,12 @@ Test cases for matrix_mul function
 ==================================
 
 >>> matrix_mul = __import__('100-matrix_mul').matrix_mul
+>>> docstring = __import__('100-matrix_mul').__doc__
+>>> len(docstring) > 0
+True
+>>> docstring = __import__('100-matrix_mul').matrix_mul.__doc__
+>>> len(docstring) > 0
+True
 >>> print(matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]]))
 [[7, 10], [15, 22]]
 >>> print(matrix_mul([[1, 2]], [[3, 4], [5, 6]]))
