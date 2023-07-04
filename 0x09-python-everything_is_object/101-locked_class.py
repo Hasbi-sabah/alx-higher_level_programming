@@ -7,20 +7,6 @@ Module for class LockedClass
 class LockedClass:
     """
     class LockedClass
+    Prevents any attrs other than first_name
     """
-
-    def __setattr__(self, attr, name):
-        """
-        Sets only first_name attr
-
-        Args:
-            self : Argument
-            attr : Argument
-            name : Argument
-
-        """
-        if attr != "first_name":
-            raise AttributeError(
-                "'LockedClass' object has no attribute {}".format(attr)
-            )
-        self.__dict__[attr] = name
+    __slots__ = ["first_name"]
