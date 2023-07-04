@@ -14,8 +14,8 @@ def text_indentation(text):
 
     """
     if type(text) is not str:
-        raise TypeError('text must be a string')
-    delims = ['.', '?', ':']
+        raise TypeError("text must be a string")
+    delims = [".", "?", ":"]
     new_text = []
     line = ""
     for letter in text:
@@ -27,8 +27,8 @@ def text_indentation(text):
         if line != "":
             new_text.append(line.replace(" \n", "\n").replace("\n ", "\n"))
     for line in new_text:
-        print(line.strip(' \t'), end='')
+        print(line.strip(" \t"), end="")
         for el in delims:
             if el in line:
-                print(end='\n\n')
+                print(end="\n\n")
                 break
