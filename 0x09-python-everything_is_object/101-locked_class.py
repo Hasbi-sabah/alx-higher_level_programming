@@ -1,7 +1,18 @@
 #!/usr/bin/python3
+"""
+Module for class LockedClass
+"""
+
+
 class LockedClass:
+    """
+    class LockedClass
+    """
+
     def __setattr__(self, attr, name):
         """
+        Sets only first_name attr
+
         Args:
             self : Argument
             attr : Argument
