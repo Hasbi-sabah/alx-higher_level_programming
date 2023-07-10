@@ -14,7 +14,7 @@
 >>> my_list = MyList([0, -1, 1])
 >>> my_list.print_sorted()
 [-1, 0, 1]
->>> my_list = MyList([-10, -8, -3, -2-10, -8, -3, -2])
+>>> my_list = MyList([-10, -8, -3, -2])
 >>> my_list.print_sorted()
 [-10, -8, -3, -2]
 >>> my_list = MyList([-8, -2, -10, -3])
