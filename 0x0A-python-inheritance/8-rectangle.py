@@ -29,6 +29,11 @@ class BaseGeometry:
             raise ValueError(name + " must be greater than 0")
 
 
+"""
+Module for the class Rectangle
+"""
+
+
 class Rectangle(BaseGeometry):
     """
     Class Rectangle that inherits from BaseGeometry
