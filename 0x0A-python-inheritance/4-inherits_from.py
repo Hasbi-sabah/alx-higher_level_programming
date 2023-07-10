@@ -14,4 +14,4 @@ def inherits_from(obj, a_class):
         obj: object to be checked
         a_class: class to be checked in
     """
-    return issubclass(obj, a_class)
+    return type(obj) != a_class and isinstance(obj, a_class)
