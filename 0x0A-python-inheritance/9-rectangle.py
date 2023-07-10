@@ -36,4 +36,4 @@ class Rectangle(BaseGeometry):
         [Rectangle] <width>/<height>
         """
         return ("[" + type(self).__name__ + "] " + str(self.__width)
-            + "/" + str(self.__height))
+                + "/" + str(self.__height))
