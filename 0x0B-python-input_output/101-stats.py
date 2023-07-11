@@ -35,7 +35,9 @@ try:
     for line in stdin:
         lines = line.split()
         size += int(lines[-1])
-        codes[lines[-2]] += 1
+        for key in codes:
+            if key == lines[-2]:
+                codes[key] += 1
         count += 1
         if count == 10:
             print_all(size, codes)
