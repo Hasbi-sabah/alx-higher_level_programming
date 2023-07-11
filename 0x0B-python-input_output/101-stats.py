@@ -18,6 +18,10 @@ def print_all(size, codes):
             print("{}: {}".format(key, codes[key]))
 
 
+"""
+Module for the main portion
+"""
+
 big_size = 0
 big_codes = {
     "200": 0,
