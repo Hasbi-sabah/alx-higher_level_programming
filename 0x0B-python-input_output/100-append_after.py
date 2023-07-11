@@ -14,10 +14,10 @@ def append_after(filename="", search_string="", new_string=""):
         search_string (str)
         new_string (str)
     """
-    with open(filename, "r", encoding="utf-8") as f:
+    with open(filename, "r") as f:
         text = f.readlines()
     for num, line in enumerate(text, 1):
         if search_string in line:
             text[num:num] = new_string
-    with open(filename, "w", encoding="utf-8") as f:
+    with open(filename, "w") as f:
         f.writelines(text)
