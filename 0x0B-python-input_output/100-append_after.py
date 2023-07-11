@@ -16,8 +16,8 @@ def append_after(filename="", search_string="", new_string=""):
     """
     with open(filename, "r") as f:
         text = f.readlines()
-    for num, line in enumerate(text, 1):
-        if search_string in line:
-            text[num:num] = new_string
     with open(filename, "w") as f:
-        f.writelines(text)
+        for line in text:
+            f.write(line)
+            if search_string in line:
+                f.write(new_string)
