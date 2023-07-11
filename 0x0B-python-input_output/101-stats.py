@@ -2,6 +2,7 @@
 """
 Module fot the function print_all
 """
+from sys import stdin
 
 
 def print_all(size, codes):
@@ -18,12 +19,9 @@ def print_all(size, codes):
             print("{}: {}".format(key, codes[key]))
 
 
-"""
-Module for the main portion
-"""
-
-big_size = 0
-big_codes = {
+size = 0
+count = 0
+codes = {
     "200": 0,
     "301": 0,
     "400": 0,
@@ -33,29 +31,15 @@ big_codes = {
     "405": 0,
     "500": 0,
 }
-while True:
-    size = 0
-    codes = {
-        "200": 0,
-        "301": 0,
-        "400": 0,
-        "401": 0,
-        "403": 0,
-        "404": 0,
-        "405": 0,
-        "500": 0,
-    }
-    for i in range(10):
-        try:
-            line = input()
-        except KeyboardInterrupt:
-            print_all(big_size, big_codes)
-            raise KeyboardInterrupt()
+try:
+    for line in stdin:
         lines = line.split()
         size += int(lines[-1])
-        big_size += int(lines[-1])
-        for key in codes:
-            if int(key) == int(lines[-2]):
-                codes[key] += 1
-                big_codes[key] += 1
+        codes[lines[-2]] += 1
+        count += 1
+        if count == 10:
+            print_all(size, codes)
+            count = 0
+except KeyboardInterrupt:
     print_all(size, codes)
+    raise
