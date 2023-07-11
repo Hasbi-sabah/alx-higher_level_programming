@@ -36,11 +36,11 @@ try:
         lines = line.split()
         try:
             size += int(lines[-1])
-        except IndexError:
+            for key in codes:
+                if key == lines[-2]:
+                    codes[key] += 1
+        except Exception:
             continue
-        for key in codes:
-            if key == lines[-2]:
-                codes[key] += 1
         count += 1
         if count == 10:
             print_all(size, codes)
