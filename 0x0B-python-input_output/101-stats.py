@@ -34,7 +34,10 @@ codes = {
 try:
     for line in stdin:
         lines = line.split()
-        size += int(lines[-1])
+        try:
+            size += int(lines[-1])
+        except IndexError:
+            continue
         for key in codes:
             if key == lines[-2]:
                 codes[key] += 1
