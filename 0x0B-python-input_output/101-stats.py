@@ -18,6 +18,7 @@ def print_all(size, codes):
         if codes[key] != 0:
             print("{}: {}".format(key, codes[key]))
 
+
 size = 0
 count = 0
 codes = {
