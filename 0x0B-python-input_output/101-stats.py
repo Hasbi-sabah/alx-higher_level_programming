@@ -13,6 +13,10 @@ def print_all(size, codes):
         size (int): size of file
         codes (dict): codes dictionnary
     """
+    print("File size: {}".format(size))
+    for key in codes:
+        if codes[key] != 0:
+            print("{}: {}".format(key, codes[key]))
 
 size = 0
 count = 0
@@ -28,6 +32,11 @@ codes = {
 }
 try:
     for line in stdin:
+        if count == 10:
+            print_all(size, codes)
+            count = 0
+        else:
+            count += 1
         lines = line.split()
         try:
             size += int(lines[-1])
@@ -39,16 +48,7 @@ try:
                     codes[key] += 1
         except IndexError:
             pass
-        count += 1
-        if count == 10:
-            print("File size: {}".format(size))
-            for key in codes:
-                if codes[key] != 0:
-                    print("{}: {}".format(key, codes[key]))
-            count = 0
+    print_all(size, codes)
 except KeyboardInterrupt:
-    print("File size: {}".format(size))
-    for key in codes:
-        if codes[key] != 0:
-            print("{}: {}".format(key, codes[key]))
+    print_all(size, codes)
     raise

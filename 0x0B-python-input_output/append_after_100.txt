@@ -1,4 +1,0 @@
-At Holberton School,
-But it can be very hard if:
-- You don't have strong C knowledge.
-pytho
