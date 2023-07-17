@@ -81,7 +81,10 @@ class Base:
             **dictionary (dict): Keyword arguments representing
             the attributes of the object.
         """
-        dummy = cls(1, 1)
+        if cls.__name__ == "Rectangle":
+            dummy = cls(1, 1)
+        else:
+            dummy = cls(1)
         cls.update(dummy, **dictionary)
         return dummy
 
