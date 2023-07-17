@@ -142,10 +142,18 @@ class Base:
                 return inst
         except FileNotFoundError:
             return []
+
     def draw(list_rectangles, list_squares):
+        """
+        Draw rectangles and squares using turtle graphics.
+
+        Args:
+            list_rectangles (list): List of Rectangle objects.
+            list_squares (list): List of Square objects.
+        """
         t = turtle.Turtle()
         screen = turtle.Screen()
-        colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple']
+        colors = ["red", "orange", "yellow", "green", "blue", "purple"]
         i = 0
         for obj in list_rectangles:
             color_index = i % len(colors)

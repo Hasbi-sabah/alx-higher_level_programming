@@ -1,28 +1,64 @@
+"""
+Module for the uniitest of the class Base
+"""
 import models.base as b
 import unittest
+
+
 class TestBase(unittest.TestCase):
+    """
+    class TestBase
+    """
+
     def test_module_doc(self):
+        """
+        Tests for the module doc
+        """
         self.assertIsNotNone(b.__doc__)
         self.assertGreater(len(b.__doc__), 0)
+
     def test_class_doc(self):
+        """
+        Tests for the class doc
+        """
         self.assertIsNotNone(b.Base.__doc__)
         self.assertGreater(len(b.Base.__doc__), 0)
+
     def test_method_doc(self):
+        """
+        Tests for the __init__ doc
+        """
         self.assertIsNotNone(b.Base.__init__.__doc__)
         self.assertGreater(len(b.Base.__init__.__doc__), 0)
+
     def setUp(self):
+        """
+        Resets counter
+        """
         b.Base._Base__nb_objects = 0
+
     def test_base_id_incr(self):
+        """
+        Tests for for base id inctrementation
+        """
         self.assertEqual(b.Base().id, 1)
         self.assertEqual(b.Base().id, 2)
         self.assertEqual(b.Base().id, 3)
         self.assertEqual(b.Base().id, 4)
         self.assertEqual(b.Base().id, 5)
+
     def test_base_id_input(self):
+        """
+        Tests for id input
+        """
         self.assertEqual(b.Base(89).id, 89)
         self.assertEqual(b.Base(-89).id, -89)
         self.assertEqual(b.Base(0).id, 0)
+
     def test_base_id_mix(self):
+        """
+        Tests for both
+        """
         self.assertEqual(b.Base(89).id, 89)
         self.assertEqual(b.Base().id, 1)
         self.assertEqual(b.Base(0).id, 0)
@@ -30,5 +66,7 @@ class TestBase(unittest.TestCase):
         self.assertEqual(b.Base().id, 3)
         self.assertEqual(b.Base(-1).id, -1)
         self.assertEqual(b.Base(4).id, 4)
-if __name__ == '__main__':
+
+
+if __name__ == "__main__":
     unittest.main()
