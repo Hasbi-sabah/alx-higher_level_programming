@@ -89,7 +89,7 @@ class TestBase(unittest.TestCase):
         """
         Tests with str id
         """
-        self.assertEqual(b.Base('Hola!').id, 'Hola!')
+        self.assertEqual(b.Base("Hola!").id, "Hola!")
 
     def test_more_args(self):
         """
@@ -250,6 +250,168 @@ class TestBase(unittest.TestCase):
         r_list.append(s.Square(1, 0, 12, 98).to_dictionary())
         r_list.append(s.Square(2, 5, 13, 4).to_dictionary())
         self.assertEqual(file_contents, b.Base.to_json_string(r_list))
+
+
+class TestBase_from_json_string(unittest.TestCase):
+    """Tests for from json method"""
+
+    def test_type(self):
+        list_input = [{"id": 5, "width": 12, "height": 6}]
+        json_input = r.Rectangle.to_json_string(list_input)
+        list_output = r.Rectangle.from_json_string(json_input)
+        self.assertEqual(list, type(list_output))
+
+    def test_in_out_r(self):
+        list_input = [{"id": 5, "width": 12, "height": 6}]
+        json_input = r.Rectangle.to_json_string(list_input)
+        list_output = r.Rectangle.from_json_string(json_input)
+        self.assertEqual(list_input, list_output)
+
+    def test_2_rect(self):
+        list_input = [
+            {"id": 5, "width": 12, "height": 6},
+            {"x": 14, "id": 22, "width": 5, "height": 8, "y": 4},
+        ]
+        json_input = r.Rectangle.to_json_string(list_input)
+        list_output = r.Rectangle.from_json_string(json_input)
+        self.assertEqual(list_input, list_output)
+
+    def test_in_out_s(self):
+        list_input = [{"id": 5, "size": 12, "y": 6}]
+        json_input = s.Square.to_json_string(list_input)
+        list_output = s.Square.from_json_string(json_input)
+        self.assertEqual(list_input, list_output)
+
+    def test_2_square(self):
+        list_input = [
+            {"id": 5, "size": 12, "x": 6, "y": 22},
+            {"x": 14, "id": 22, "size": 5, "y": 4},
+        ]
+        json_input = s.Square.to_json_string(list_input)
+        list_output = s.Square.from_json_string(json_input)
+        self.assertEqual(list_input, list_output)
+
+    def test_None(self):
+        self.assertEqual(b.Base.from_json_string(None), [])
+
+    def test_no_args(self):
+        with self.assertRaises(TypeError):
+            b.Base.from_json_string()
+
+    def test_wrong_input(self):
+        with self.assertRaises(TypeError):
+            b.Base.from_json_string([], 3)
+
+
+class TestBase_create(unittest.TestCase):
+    """Tests for the create method"""
+
+    def test_create_original_r(self):
+        r1 = r.Rectangle(2, 5, 14)
+        r1_dict = r1.to_dictionary()
+        r2 = r.Rectangle.create(**r1_dict)
+        self.assertEqual(str(r1), "[Rectangle] ({}) 14/0 - 2/5".format(r1.id))
+
+    def test_create_new_r(self):
+        r1 = r.Rectangle(2, 5, 14)
+        r1_dict = r1.to_dictionary()
+        r2 = r.Rectangle.create(**r1_dict)
+        self.assertEqual(str(r2), "[Rectangle] ({}) 14/0 - 2/5".format(r2.id))
+
+    def test_2_not_equal_r(self):
+        r1 = r.Rectangle(2, 5, 14)
+        r1_dict = r1.to_dictionary()
+        r2 = r.Rectangle.create(**r1_dict)
+        self.assertIsNot(r2, r1)
+
+    def test_2_not_equal2_r(self):
+        r1 = r.Rectangle(2, 5, 14)
+        r1_dict = r1.to_dictionary()
+        r2 = r.Rectangle.create(**r1_dict)
+        self.assertNotEqual(r2, r1)
+
+    def test_create_original_s(self):
+        s1 = s.Square(2, 5, 14)
+        s_dict = s1.to_dictionary()
+        s2 = s.Square.create(**s_dict)
+        self.assertEqual(str(s1), "[Square] ({}) 5/14 - 2".format(s1.id))
+
+    def test_create_new_s(self):
+        s1 = s.Square(2, 5, 14)
+        s_dict = s1.to_dictionary()
+        s2 = s.Square.create(**s_dict)
+        self.assertEqual(str(s2), "[Square] ({}) 5/14 - 2".format(s1.id))
+
+    def test_2_not_equal_s(self):
+        s1 = s.Square(2, 5, 14)
+        s_dict = s1.to_dictionary()
+        s2 = s.Square.create(**s_dict)
+        self.assertIsNot(s2, s1)
+
+    def test_2_not_equal2_s(self):
+        s1 = s.Square(2, 5, 14)
+        s_dict = s1.to_dictionary()
+        s2 = s.Square.create(**s_dict)
+        self.assertNotEqual(s2, s1)
+
+
+class TestBase_load_from_file(unittest.TestCase):
+    """Tests for the load from file method"""
+
+    @classmethod
+    def tearDown(self):
+        files = ["r.Rectangle.json", "s.Square.json"]
+        for f in files:
+            try:
+                os.remove(f)
+            except FileNotFoundError:
+                pass
+
+    def test_load_1_r(self):
+        r1 = r.Rectangle(2, 5, 14)
+        r2 = r.Rectangle(10, 12, 5, 2, 1)
+        r.Rectangle.save_to_file([r1, r2])
+        list_output = r.Rectangle.load_from_file()
+        self.assertEqual(str(r1), str(list_output[0]))
+
+    def test_load_2_r(self):
+        r1 = r.Rectangle(2, 5, 14)
+        r2 = r.Rectangle(10, 12, 5, 2, 1)
+        r.Rectangle.save_to_file([r1, r2])
+        list_output = r.Rectangle.load_from_file()
+        self.assertEqual(str(r2), str(list_output[1]))
+
+    def test_type_r(self):
+        r1 = r.Rectangle(2, 5, 14)
+        r2 = r.Rectangle(10, 12, 5, 2, 1)
+        r.Rectangle.save_to_file([r1, r2])
+        list_output = r.Rectangle.load_from_file()
+        self.assertTrue(all(type(obj)) == r.Rectangle for obj in list_output)
+
+    def test_load_1_s(self):
+        s1 = s.Square(2, 5, 14)
+        s2 = s.Square(10, 12, 2, 1)
+        s.Square.save_to_file([s1, s2])
+        list_output = s.Square.load_from_file()
+        self.assertEqual(str(s1), str(list_output[0]))
+
+    def test_load_2_s(self):
+        s1 = s.Square(2, 5, 14)
+        s2 = s.Square(10, 5, 2, 1)
+        s.Square.save_to_file([s1, s2])
+        list_output = s.Square.load_from_file()
+        self.assertEqual(str(s2), str(list_output[1]))
+
+    def test_type_s(self):
+        s1 = s.Square(2, 5, 14)
+        s2 = s.Square(12, 5, 2, 1)
+        s.Square.save_to_file([s1, s2])
+        list_output = s.Square.load_from_file()
+        self.assertTrue(all(type(obj)) == s.Square for obj in list_output)
+
+    def test_more_args(self):
+        with self.assertRaises(TypeError):
+            b.Base.load_from_file([], 2)
 
 
 if __name__ == "__main__":
