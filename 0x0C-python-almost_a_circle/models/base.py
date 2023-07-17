@@ -37,7 +37,7 @@ class Base:
         Args:
             list_dictionaries (list): A list of dictionaries.
         """
-        if list_dictionaries is None or list_dictionaries == []:
+        if list_dictionaries is None or len(list_dictionaries) == 0:
             return "[]"
         return json.dumps(list_dictionaries)
 
