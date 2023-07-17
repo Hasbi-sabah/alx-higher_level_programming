@@ -4,6 +4,7 @@ Module for the function Base
 """
 import json
 import csv
+import turtle
 
 
 class Base:
@@ -141,3 +142,33 @@ class Base:
                 return inst
         except FileNotFoundError:
             return []
+    def draw(list_rectangles, list_squares):
+        t = turtle.Turtle()
+        screen = turtle.Screen()
+        colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple']
+        i = 0
+        for obj in list_rectangles:
+            color_index = i % len(colors)
+            t.color(colors[color_index])
+            t.penup()
+            t.goto(obj.x, obj.y)
+            t.pendown()
+            for _ in range(2):
+                t.forward(obj.width)
+                t.right(90)
+                t.forward(obj.height)
+                t.right(90)
+            screen.clear()
+            i += 1
+        for obj in list_squares:
+            color_index = i % len(colors)
+            t.color(colors[color_index])
+            t.penup()
+            t.goto(obj.x, obj.y)
+            t.pendown()
+            for _ in range(4):
+                t.forward(obj.size)
+                t.right(90)
+            screen.clear()
+            i += 1
+        turtle.done()
