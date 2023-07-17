@@ -52,16 +52,16 @@ class TestBase(unittest.TestCase):
         """
         Tests for for base id inctrementation
         """
-        b1 = Base()
-        b2 = Base()
+        b1 = b.Base()
+        b2 = b.Base()
         self.assertEqual(b1.id, b2.id - 1)
 
     def test_id_None(self):
         """
         Tests for None id
         """
-        b1 = Base(None)
-        b2 = Base()
+        b1 = b.Base(None)
+        b2 = b.Base()
         self.assertEqual(b1.id, b2.id - 1)
 
     def test_private_attribute(self):
@@ -69,13 +69,13 @@ class TestBase(unittest.TestCase):
         Tests for private attributes
         """
         with self.assertRaises(AttributeError):
-            Base(5).__nb_objects
+            b.Base(5).__nb_objects
 
     def test_id_True(self):
         """
         Tests id boolean
         """
-        self.assertEqual(Base(True).id, True)
+        self.assertEqual(b.Base(True).id, True)
 
     def test_base_id_input(self):
         """
@@ -89,14 +89,14 @@ class TestBase(unittest.TestCase):
         """
         Tests with str id
         """
-        self.assertEqual(Base('Hola!').id, 'Hola!')
+        self.assertEqual(b.Base('Hola!').id, 'Hola!')
 
     def test_more_args(self):
         """
         Tests for too many args
         """
         with self.assertRaises(TypeError):
-            Base(5, 10)
+            b.Base(5, 10)
 
     def test_base_id_mix(self):
         """
