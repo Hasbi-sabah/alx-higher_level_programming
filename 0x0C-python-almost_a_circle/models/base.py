@@ -4,7 +4,10 @@ Module for the function Base
 """
 import json
 import csv
+
+"""
 import turtle
+"""
 
 
 class Base:
@@ -143,6 +146,8 @@ class Base:
         except FileNotFoundError:
             return []
 
+
+'''
     def draw(list_rectangles, list_squares):
         """
         Draw rectangles and squares using turtle graphics.
@@ -180,3 +185,4 @@ class Base:
             screen.clear()
             i += 1
         turtle.done()
+'''
