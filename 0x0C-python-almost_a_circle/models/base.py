@@ -100,8 +100,6 @@ class Base:
             with open(cls.__name__ + ".json", "r") as f:
                 string = f.read()
                 lst = cls.from_json_string(string)
-                if lst == []:
-                    return []
                 inst = []
                 for item in lst:
                     inst.append(cls.create(**item))
