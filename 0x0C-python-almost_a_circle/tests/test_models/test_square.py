@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """
 Module for the unittest of the class Square
 """

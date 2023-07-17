@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """
 Module for the unittests of the class Rectangle
 """
