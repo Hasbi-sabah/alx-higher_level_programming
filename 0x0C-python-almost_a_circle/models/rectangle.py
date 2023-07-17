@@ -116,7 +116,7 @@ class Rectangle(Base):
 
     def display(self):
         """
-        Display the rectangle by printing its representation using "#" characters.
+        Display the rectangle by printing the "#" characters.
         """
         for i in range(self.y):
             print()
@@ -131,7 +131,8 @@ class Rectangle(Base):
         Return a string representation of the rectangle object.
         """
         s = "[{}] ({}) {}/{} - {}/{}".format(
-            type(self).__name__, self.id, self.x, self.y, self.width, self.height
+            type(self).__name__, self.id, self.x,
+            self.y, self.width, self.height
         )
         return s
 
