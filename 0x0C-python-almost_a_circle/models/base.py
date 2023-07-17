@@ -67,7 +67,7 @@ class Base:
             json_string (str): The JSON string to be deserialized.
         """
         if json_string is None or json_string == "":
-            return ""
+            return []
         return json.loads(json_string)
 
     @classmethod
