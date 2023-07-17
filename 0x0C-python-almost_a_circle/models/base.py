@@ -30,6 +30,7 @@ class Base:
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
 
+    @staticmethod
     def to_json_string(list_dictionaries):
         """
         Return the JSON string representation of a list of dictionaries.
@@ -57,6 +58,7 @@ class Base:
         with open("{}.json".format(cls.__name__), "w") as f:
             f.write(Base.to_json_string(json_list))
 
+    @staticmethod
     def from_json_string(json_string):
         """
         Deserialize a JSON string into a Python object.
