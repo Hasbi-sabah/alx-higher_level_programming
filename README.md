@@ -1,1 +1,1 @@
-a repo for higher level languages (python..)
+a repo for higher level languages (python, SQL..)
