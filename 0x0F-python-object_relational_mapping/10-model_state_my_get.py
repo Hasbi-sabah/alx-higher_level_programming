@@ -10,10 +10,11 @@ from sys import argv
 
 if __name__ == "__main__":
     engine = create_engine(f"mysql://{argv[1]}:{argv[2]}@\
-172.17.0.2:3306/{argv[3]}")
+localhost:3306/{argv[3]}")
     Session = sessionmaker(bind=engine)
     session = Session()
-    res = session.query(State).filter(State.name.ilike(argv[4])).first()
+    state_name = argv[4]
+    res = session.query(State).filter(State.name.like(state_name)).first()
     if res:
         print(f"{res.id}")
     else:
