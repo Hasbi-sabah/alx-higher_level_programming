@@ -14,7 +14,7 @@ if __name__ == "__main__":
 localhost:3306/{argv[3]}")
     Session = sessionmaker(bind=engine)
     session = Session()
-    res = session.query(State).filter(State.name.ilike("%a%")).all()
+    res = session.query(State).filter(State.name.like("%a%")).all()
     for row in res:
         print(f"{row.id}: {row.name}")
     session.close()
