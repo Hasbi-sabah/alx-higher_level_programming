@@ -14,5 +14,8 @@ localhost:3306/{argv[3]}")
     Session = sessionmaker(bind=engine)
     session = Session()
     res = session.query(State).first()
-    print(f"{res.id}: {res.name}")
+    if res:
+        print(f"{res.id}: {res.name}")
+    else:
+        print("Nothing")
     session.close()
