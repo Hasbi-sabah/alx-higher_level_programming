@@ -13,9 +13,11 @@ from sys import argv
 if __name__ == "__main__":
     engine = create_engine(f"mysql://{argv[1]}:{argv[2]}@\
 localhost:3306/{argv[3]}")
+    Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
-    query = session.query(City, State).join(State).all()
+    query = session.query(City, State).join(State\
+).order_by(State.id, City.id).all()
     prev_state = ""
     for cities, states in query:
         if states.name is not prev_state:
