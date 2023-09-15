@@ -16,12 +16,10 @@ localhost:3306/{argv[3]}")
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
-    query = session.query(City, State).join(State\
-).order_by(State.id, City.id).all()
-    prev_state = ""
-    for cities, states in query:
-        if states.name is not prev_state:
-            prev_state = states.name
-            print(f"{states.id}: {states.name}")
-        print(f"    {cities.id}: {cities.name}")
+    query = session.query(State).outerjoin(City).order_by(State.id, \
+City.id).all()
+    for states in query:
+        print(f"{states.id}: {states.name}")
+        for city in states.cities:
+            print(f"    {city.id}: {city.name}")
     session.close()
