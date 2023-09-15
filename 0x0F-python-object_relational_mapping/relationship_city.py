@@ -2,13 +2,10 @@
 """
 Module that contains the class definition of a City
 """
-from sqlalchemy import Column, Integer, String, create_engine, ForeignKey
+from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 from relationship_state import Base
 from sys import argv
-
-engine = create_engine(f"mysql://{argv[1]}:{argv[2]}@\
-localhost:3306/{argv[3]}")
 
 
 class City(Base):
@@ -28,6 +25,3 @@ class City(Base):
     name = Column(String(128), nullable=False)
     state_id = Column(Integer, ForeignKey("states.id"), nullable=False)
     state = relationship("State", foreign_keys=state_id)
-
-
-Base.metadata.create_all(engine)
