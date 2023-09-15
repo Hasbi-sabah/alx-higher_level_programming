@@ -9,6 +9,7 @@ from sys import argv
 
 Base = declarative_base()
 
+
 class State(Base):
     """
     Represents a state in the database.
