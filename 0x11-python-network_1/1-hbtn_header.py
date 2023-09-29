@@ -1,10 +1,9 @@
 #!/usr/bin/python3
-"""
-Python script that takes in a URL, and displays the value of the X-Request-Id variable.
-"""
+""" Python script that displays the value of the X-Request-Id variable. """
 import urllib.request
-from sys import argv
+import sys
 
-with urllib.request.urlopen(argv[1]) as req:
-    info = req.info()
-    print(info['X-Request-Id'])
+if __name__ == "__main__":
+    with urllib.request.urlopen(sys.argv[1]) as req:
+        info = req.info()
+        print(info["X-Request-Id"])
