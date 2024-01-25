@@ -1,55 +1,40 @@
 #!/usr/bin/python3
-"""
-Module fot the function print_all
-"""
+""" a script that reads stdin line by line and computes metrics """
+
 from sys import stdin
 
 
-def print_all(size, codes):
-    """
-    Function that prints all, duh!
-
-    Args:
-        size (int): size of file
-        codes (dict): codes dictionnary
-    """
-    print("File size: {}".format(size))
-    for key in codes:
-        if codes[key] != 0:
-            print("{}: {}".format(key, codes[key]))
-
-
-size = 0
+status_dict = {200: 0, 301: 0, 400: 0, 401: 0, 403: 0, 404: 0, 405: 0, 500: 0}
+total_file_size = 0
 count = 0
-codes = {
-    "200": 0,
-    "301": 0,
-    "400": 0,
-    "401": 0,
-    "403": 0,
-    "404": 0,
-    "405": 0,
-    "500": 0,
-}
+
+
+def print_all():
+    """function to print all"""
+    print("File size:", total_file_size)
+    for key, value in status_dict.items():
+        if value:
+            print("{}: {}".format(key, value))
+
+
 try:
     for line in stdin:
+        count += 1
+        line = line.split()
+        try:
+            file_size = int(line[-1])
+            total_file_size += file_size
+        except (IndexError, ValueError, TypeError):
+            continue
+        try:
+            status_code = int(line[-2])
+            if status_code in status_dict.keys():
+                status_dict[status_code] += 1
+        except (IndexError, ValueError, TypeError):
+            continue
         if count == 10:
-            print_all(size, codes)
+            print_all()
             count = 0
-        else:
-            count += 1
-        lines = line.split()
-        try:
-            size += int(lines[-1])
-        except (IndexError, ValueError):
-            pass
-        try:
-            for key in codes:
-                if key == lines[-2]:
-                    codes[key] += 1
-        except IndexError:
-            pass
-    print_all(size, codes)
+    print_all()
 except KeyboardInterrupt:
-    print_all(size, codes)
-    raise
+    print_all()
